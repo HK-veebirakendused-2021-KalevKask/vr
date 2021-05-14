@@ -1,14 +1,4 @@
 <?php
-
-
-
-	//klassi näide
-	//require_once "classes/Test.class.php";
-	//$test_object = new Test(5);
-	//echo " Avalik number on".$test_object->non_secret;
-	//$test_object->reveal();
-	
-	
 	$myname = "Kalev Kask";
 	$currenttime = date("d.m.Y H:i:s");
 	$timehtml = "\n <p>Lehe avamise hetkel oli: " .$currenttime .".</p> \n";
@@ -87,17 +77,6 @@
 	?>
 	</h1>
 	<p>See leht on valminud õppetöö raames!</p>
-	<hr>
-	<h2>Logi sisse</h2>
-	<form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-		<label>E-mail (kasutajatunnus):</label><br>
-		<input type="email" name="email_input" value="<?php echo $email; ?>"><span><?php echo $email_error; ?></span><br>
-		<label>Salasõna:</label><br>
-		<input name="password_input" type="password"><span><?php echo $password_error; ?></span><br>
-		<input name="login" type="login_submit" value="Logi sisse!"><span><?php echo $notice; ?></span>
-	</form>
-
-	<hr>
 	<?php
 		echo $timehtml. " Täna on ".$dayEST;
 		echo $semesterdurhtml;
