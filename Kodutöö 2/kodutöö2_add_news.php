@@ -1,16 +1,16 @@
 <?php
 
-	require_once "usesession.php";
 	//require_once "usesession.php";		// ainult sisseloginud kasutajale
-	require_once "../../../conf.php"; //annab andmbaasiga ühendamiseks vajalikud andmed, mis asuvad antud asukohas tigur serversis	
-	require_once "fnc_general.php";	//valideerimis funktsioonid, w3schools materjalides. aitab korrigeerida sisendiks saadud teksti
+	require_once "../../../conf.php"; //annab andmbaasiga ühendamiseks vajalikud andmed, mis asuvad antud asukohas tigur servers	
+	require_once "fnc_general.php";							// paneme juhise kus on serveri andmed/paroolid kus andmed asuvad
+	//echo $server_host;
 	$news_input_error = null; //tekitame muutuja, millele tekib väärtus juhul, kui uudise peakiri jääb sisetamata (rida 14)
 	//var_dump($_POST);											// On olemas ka $_GET		// näitab kõiki postitusi
 	$titleTemp = null; 		// pealkirja väli
 	$contentTemp = null; 	// //tekitame muutuja, millele tekib väärtus juhul, kui uudise sisu jääb sisetamata (rida 18)
 	$authorTemp = null;		// autori siu
 	if(isset($_POST["news_submit"])){   //Kui POST massivi sees on news_submitile on määratud väärtus, ehk kas salvesta uudis nuppu on kasutaja vajutanud 
-		if(empty($_POST["news_title_input"])){ //Kui pealkirja lahter on tühi, pärast submit nuppu vajutamist tehakse järggnevad toimingud:
+		if(empty($_POST["news_title_input"])){ //Kui pealkirja lahter on tühi, pärast submit nuppu vajutamist
 			$news_input_error = "Uudise pealkiri on puudu! ";
 			if(isset($_POST["news_content_input"])){
 				$contentTemp = $_POST["news_content_input"];
@@ -19,7 +19,7 @@
 				$authorTemp = $_POST["news_content_input"];
 			}
 		}
-		if(empty($_POST["news_content_input"])){  //Kui sisu lahter on tühi, pärast submit nuppu vajutamist tehakse järggnevad toimingud:
+		if(empty($_POST["news_content_input"])){
 			$news_input_error .= " Uudise tekst on puudu! ";		//.= võta senine ja pane juurde
 			if(isset($_POST["news_title_input"])){
 				$titleTemp = $_POST["news_title_input"];
@@ -30,10 +30,9 @@
 		}
 	
 
-		
-		if(empty($news_input_error)){	//Kui vajalikjud väljad sisendina antud saab programm edasi toimetama vastavat
-			// valideerime sisendandmed
-			$news_title_input = test_input($_POST["news_title_input"]); 
+		// valideerime sisendandmed
+		if(empty($news_input_error)){	//Kui kõik väljad sisendina antud saab programm edasi toimetama
+			$news_title_input = test_input($_POST["news_title_input"]);
 			$news_content_input = test_input($_POST["news_content_input"]);
 			$news_author_input = test_input($_POST["news_author_input"]);
 			//Salvestame andmebaasi
@@ -58,11 +57,6 @@
 		$stmt -> execute(); //täitetakse käsk
 		$stmt -> close();
 		$conn -> close(); //logitakse andmebaasist välja
-		//tühjendame muutujate sisu, et neid ei oleks võimalik korduvalt käiku lasta
-		$GLOBALS["news_input_error"] = null;
-		$GLOBALS["news_title"] = null;
-		$GLOBALS["news_content"] = null;
-		$GLOBALS["news_author"] = null;
 	}
 
 

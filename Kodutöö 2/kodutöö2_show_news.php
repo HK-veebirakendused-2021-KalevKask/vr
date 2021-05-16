@@ -1,5 +1,5 @@
 <?php
-	require_once "usesession.php";
+//require_once "usesession.php";			// ainult sisseloginud kasutajale
 	require_once "../../../conf.php";
 		
 	function read_news() { // funktsioon uudiste lugemiseks
@@ -58,7 +58,7 @@ $news_html = read_news();
 <h1>Uudiste lugemine</h1>
 <p>See leht on valminud õppetöö raames!</p>
 <hr>
-<form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"> <!-- Vorm kuvatavate uudiste arvu määramiseks -->
+<form method="POST"> <!-- Vorm kuvatavate uudiste arvu määramiseks -->
 <input type="number" min="1" max="10" value="3" name="newsCount">
 <input type="submit" name="count_submit" value="Kuva uudised">
 </form>
