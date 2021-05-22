@@ -1,3 +1,5 @@
+
+
 <?php
   require("classes/SessionManager.class.php");
   SessionManager::sessionStart("vr", 0, "/~kalev.kask/", "tigu.hk.tlu.ee");

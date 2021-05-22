@@ -12,6 +12,7 @@ require_once "usesession.php";
 		// header("Location: page.php");  //kasutaja suunatakse pahe.php-sse tagasi
 		
 	// }
+var_dump($_SESSION);
 
 ?>
 <!DOCTYPE html>
@@ -27,6 +28,9 @@ require_once "usesession.php";
 	<hr>
 	<ul>
 		<li><a href="?logout=1">Logi välja</a></li>
+		<li><a href="add_news.php">Uudiste lisamine</a></li>
+		<li><a href="show_news.php">Uudise lugemine</a></li>
+		<li><a href="upload_photo.php">Fotode üles laadimine</a></li>
 	</ul>
 </body>
 </html>
