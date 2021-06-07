@@ -58,12 +58,16 @@ $news_html = read_news();
 <h1>Uudiste lugemine</h1>
 <p>See leht on valminud õppetöö raames!</p>
 <hr>
+<p><?php echo "Kasutaja: ". $_SESSION["user_firstname"] ." ". $_SESSION["user_lastname"] . ""?></p>
+<ul>
+	<li><a href="home.php">Avalehele</a></li>
+	<li><a href="?logout=1">Logi välja</a></li>
+</ul>
+<hr>
 <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>"> <!-- Vorm kuvatavate uudiste arvu määramiseks -->
 <input type="number" min="1" max="10" value="3" name="newsCount">
 <input type="submit" name="count_submit" value="Kuva uudised">
 </form>
 <p><?php echo $news_html; ?></p> <!-- Kuvab uudised -->
-<p>Tagasi <a href="page.php">avalehele</a></p>
-<p><a href="?logout=1">Logi välja</a></p>
 </body>
 </html>

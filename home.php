@@ -12,7 +12,7 @@ require_once "usesession.php";
 		// header("Location: page.php");  //kasutaja suunatakse pahe.php-sse tagasi
 		
 	// }
-var_dump($_SESSION);
+//var_dump($_SESSION);
 
 ?>
 <!DOCTYPE html>
@@ -22,15 +22,18 @@ var_dump($_SESSION);
 	<title>Veebirakendused ja nende loomine 2021</title>
 </head>
 <body>
-	<p><?php echo "Kasutaja: ". $_SESSION["user_firstname"] ." ". $_SESSION["user_lastname"] . ""?></p>
+	
 	<h1>Sisseloginud kasutaja, vinge süsteem</h1>
 	<p>See leht on valminud õppetöö raames!</p>
 	<hr>
-	<ul>
-		<li><a href="?logout=1">Logi välja</a></li>
+	<p><?php echo "Kasutaja: ". $_SESSION["user_firstname"] ." ". $_SESSION["user_lastname"] . ""?></p>
+	<ul>	
 		<li><a href="add_news.php">Uudiste lisamine</a></li>
 		<li><a href="show_news.php">Uudise lugemine</a></li>
 		<li><a href="upload_photo.php">Fotode üles laadimine</a></li>
+		<li><a href="gallery.php">Galerii</a></li>
+		<li><a href="?logout=1">Logi välja</a></li>
 	</ul>
+	<hr>
 </body>
 </html>

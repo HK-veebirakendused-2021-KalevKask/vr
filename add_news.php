@@ -78,6 +78,12 @@
 	<h1>Uudiste lisamine</h1>
 	<p>See leht on valminud õppetöö raames!</p>
 	<hr>
+	<p><?php echo "Kasutaja: ". $_SESSION["user_firstname"] ." ". $_SESSION["user_lastname"] . ""?></p>
+	<ul>
+		<li><a href="home.php">Avalehele</a></li>
+		<li><a href="?logout=1">Logi välja</a></li>
+	</ul>
+	<hr>
 	<p style="color:red"><b><?php echo $news_input_error; ?></b></p> <!-- Kuvab errorid, kui mingi välja jäävad sisestamatta-->
 	
 	<form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">  <!-- Formiga saab võtta infot kasutajalt vastu, mis saadetakse serverisse, method="POST" saadab andmed seriverisse nii. et neid brauseri aadressi real välja ei paista-->
@@ -94,7 +100,6 @@
 		<br>
 	</form>
 	
-	<p>Tagasi <a href="page.php">avalehele</a></p>
-	<p><a href="?logout=1">Logi välja</a></p>
+
 </body>
 </html>
